@@ -1,0 +1,22 @@
+[
+    {
+        "id": "jcr",
+        "nome": "José Carlos Ramalho",
+        "leciona": "PRC"
+    },
+    {
+        "id": "jb",
+        "nome": "João Barbosa",
+        "leciona": "AP"
+    },
+    {
+        "id": "jls",
+        "nome": "João Luís Sobral",
+        "leciona": "ESC"
+    },
+    {
+        "id": "jj",
+        "nome": "José João Almeida",
+        "leciona": "SPLN"
+    }
+]

@@ -1,0 +1,6 @@
+###  http://www.di.uminho.pt/prc2021/uc#$id
+:$id rdf:type owl:NamedIndividual ,
+              :Professor ;
+     :ensina :$uc ;
+     :éProfessorDe :$alunos ;
+     :nome "$nome" .

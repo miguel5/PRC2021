@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pr>
+    <meta>
+        <key></key>
+        <title>TPC1 -PRC</title>
+        <subtitle></subtitle>
+        <bdate>22-02-2021</bdate>
+        <edate>01-03-2021</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+    <workteam>
+        <worker num="A76936">
+            <name>Luís Ferreira</name>
+            <email>a76936@alunos.uminho.pt</email>
+        </worker>
+    </workteam>
+    <abstract>
+        <p>
+            Dataset docs.json e ucs.json feito manualmente e dataset alunos.json gerado através da ferramenta JSON Generator juntamente com o script generator.py
+        </p>
+        <p>
+            Os ficheiros template.txt contêm as templates para cada instância de aluno, docente ou UC, com os respetivos placeholders
+        </p>
+        <p>
+            O script converter.py faz a conversão dos 3 datasets para a ontologia e escreve-a no ficheiro converted.ttl
+        </p>
+    </abstract>
+    <deliverables>
+        <link url="https://www.json-generator.com/"></link>
+    </deliverables>
+</pr>

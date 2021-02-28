@@ -1,0 +1,7 @@
+###  http://www.di.uminho.pt/prc2021/uc#PRC2021
+:PRC2021 rdf:type owl:NamedIndividual ,
+                  :UnidadeCurricular ;
+         :éEnsinadaPor :$docentes ;
+         :éFrequentadaPor :$alunos ;
+         :anoLetivo "2020/2021" ;
+         :designação "$designacao" .

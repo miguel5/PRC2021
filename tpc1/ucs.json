@@ -1,0 +1,18 @@
+[
+    {
+        "id": "PRC",
+        "designacao": "Processamento e Representação de Conhecimento"
+    },
+    {
+        "id": "SPLN",
+        "designacao": "Scripting no Processamento de Linguagem Natural"
+    },
+    {
+        "id": "AP",
+        "designacao": "Algoritmos Paralelos"
+    },
+    {
+        "id": "ESC",
+        "designacao": "Engenharia de Sistemas de Computação"
+    }
+]
