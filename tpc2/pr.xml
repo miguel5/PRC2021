@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pr>
+    <meta>
+        <key></key>
+        <title>TPC2 -PRC</title>
+        <subtitle></subtitle>
+        <bdate>01-03-2021</bdate>
+        <edate>08-03-2021</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+    <workteam>
+        <worker num="A76936">
+            <name>Luís Ferreira</name>
+            <email>a76936@alunos.uminho.pt</email>
+        </worker>
+    </workteam>
+    <abstract>
+        <p>
+            O ficheiro 'musica_xml2ttl.xsl' contém o código que faz a 'tradução' do arquivo digital de música fornecido pelo professor para um ficheiro em ttl.
+        </p>
+        <p>
+            Através do Protégé foi gerado um primeiro ttl que serviu como template para a geração das restantes entidades do arquivo.
+        </p>
+        <p>
+            A 'tradução' foi feita recorrendo a uma ferramenta externa mencionado abaixo.
+        </p>
+    </abstract>
+    <deliverables>
+        <link url="https://www.freeformatter.com/xsl-transformer.html"></link>
+        <link url="https://www4.di.uminho.pt/~jcr/Transfers/datasets/arquivo-musica-digital.xml"></link>
+    </deliverables>
+</pr>
