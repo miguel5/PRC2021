@@ -1,0 +1,128 @@
+@prefix : <http://www.di.uminho.pt/prc2021/historia_advogados#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.di.uminho.pt/prc2021/historia_advogados> .
+
+<http://www.di.uminho.pt/prc2021/historia_advogados> rdf:type owl:Ontology ;
+                                                      rdfs:comment "Ontologia para a charada de advogados" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.di.uminho.pt/Charada#dir
+<http://www.di.uminho.pt/Charada#dir> rdf:type owl:ObjectProperty ;
+                                      owl:inverseOf <http://www.di.uminho.pt/Charada#esq> .
+
+
+###  http://www.di.uminho.pt/Charada#esq
+<http://www.di.uminho.pt/Charada#esq> rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.di.uminho.pt/Charada#bebida
+<http://www.di.uminho.pt/Charada#bebida> rdf:type owl:DatatypeProperty .
+
+
+###  http://www.di.uminho.pt/Charada#carro
+<http://www.di.uminho.pt/Charada#carro> rdf:type owl:DatatypeProperty .
+
+
+###  http://www.di.uminho.pt/Charada#cor
+<http://www.di.uminho.pt/Charada#cor> rdf:type owl:DatatypeProperty .
+
+
+###  http://www.di.uminho.pt/Charada#idade
+<http://www.di.uminho.pt/Charada#idade> rdf:type owl:DatatypeProperty .
+
+
+###  http://www.di.uminho.pt/Charada#nome
+<http://www.di.uminho.pt/Charada#nome> rdf:type owl:DatatypeProperty .
+
+
+###  http://www.di.uminho.pt/Charada#área
+<http://www.di.uminho.pt/Charada#área> rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.di.uminho.pt/Charada#Advogado
+<http://www.di.uminho.pt/Charada#Advogado> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://www.di.uminho.pt/Charada#Pessoa> .
+
+
+###  http://www.di.uminho.pt/Charada#Pessoa
+<http://www.di.uminho.pt/Charada#Pessoa> rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.di.uminho.pt/Charada#A1
+<http://www.di.uminho.pt/Charada#A1> rdf:type owl:NamedIndividual ;
+                                     <http://www.di.uminho.pt/Charada#dir> <http://www.di.uminho.pt/Charada#A2> ;
+                                     <http://www.di.uminho.pt/Charada#bebida> "margarita"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#carro> "crossover"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#cor> "verde"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#idade> 40 ;
+                                     <http://www.di.uminho.pt/Charada#nome> "Otávio"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#área> "imobiliária"^^xsd:string .
+
+
+###  http://www.di.uminho.pt/Charada#A2
+<http://www.di.uminho.pt/Charada#A2> rdf:type owl:NamedIndividual ;
+                                     <http://www.di.uminho.pt/Charada#dir> <http://www.di.uminho.pt/Charada#A3> ;
+                                     <http://www.di.uminho.pt/Charada#esq> <http://www.di.uminho.pt/Charada#A1> ;
+                                     <http://www.di.uminho.pt/Charada#bebida> "mojito"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#carro> "pickup"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#cor> "amarela"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#idade> 30 ;
+                                     <http://www.di.uminho.pt/Charada#nome> "Alberto"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#área> "trabalhista"^^xsd:string .
+
+
+###  http://www.di.uminho.pt/Charada#A3
+<http://www.di.uminho.pt/Charada#A3> rdf:type owl:NamedIndividual ;
+                                     <http://www.di.uminho.pt/Charada#dir> <http://www.di.uminho.pt/Charada#A4> ;
+                                     <http://www.di.uminho.pt/Charada#esq> <http://www.di.uminho.pt/Charada#A2> ;
+                                     <http://www.di.uminho.pt/Charada#bebida> "martini"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#carro> "hyundai"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#cor> "azul"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#idade> 34 ;
+                                     <http://www.di.uminho.pt/Charada#nome> "Ulísses"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#área> "comercial"^^xsd:string .
+
+
+###  http://www.di.uminho.pt/Charada#A4
+<http://www.di.uminho.pt/Charada#A4> rdf:type owl:NamedIndividual ;
+                                     <http://www.di.uminho.pt/Charada#dir> <http://www.di.uminho.pt/Charada#A5> ;
+                                     <http://www.di.uminho.pt/Charada#esq> <http://www.di.uminho.pt/Charada#A3> ;
+                                     <http://www.di.uminho.pt/Charada#bebida> "cosmopolitan"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#carro> "suv"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#cor> "vermelha"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#idade> 37 ;
+                                     <http://www.di.uminho.pt/Charada#nome> "Luís"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#área> "civil"^^xsd:string .
+
+
+###  http://www.di.uminho.pt/Charada#A5
+<http://www.di.uminho.pt/Charada#A5> rdf:type owl:NamedIndividual ;
+                                     <http://www.di.uminho.pt/Charada#esq> <http://www.di.uminho.pt/Charada#A4> ;
+                                     <http://www.di.uminho.pt/Charada#bebida> "caipirinha"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#carro> "subaru"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#cor> "branca"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#idade> 44 ;
+                                     <http://www.di.uminho.pt/Charada#nome> "Carlos"^^xsd:string ;
+                                     <http://www.di.uminho.pt/Charada#área> "consumidor"^^xsd:string .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
