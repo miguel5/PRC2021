@@ -1,0 +1,18 @@
+extends layout
+
+block content
+
+  header.w3-margin-left
+    h1.w3-text-blue Repositórios
+  
+  if repos.length 
+    each r in repos 
+      ul
+        li 
+          a(href=`/repos/${r.id}`)
+            b= r.id 
+            if r.title 
+              span  - #{r.title}
+
+  else
+    p.w3-margin-left Nenhum repositório encontrado.
