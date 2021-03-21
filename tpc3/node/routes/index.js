@@ -43,7 +43,7 @@ router.get('/repos/:r', function(req, res) {
 
 router.get('/repos/:r/classe/:c', function(req, res) {
   var getLink = baseLink + req.params.r + '?query='
-  var query = `SELECT * WHERE { ?s rdf:type :${req.params.c} .}`
+  var query = `SELECT * WHERE { :${req.params.c} ?p ?o .}`
   var encoded = encodeURIComponent(prefixes + query)
 
   axios.get(getLink + encoded)
@@ -57,35 +57,20 @@ router.get('/repos/:r/classe/:c', function(req, res) {
 });
 
 
+router.get('/repos/:r/individuo/:i', function(req, res){
+  var getLink = baseLink + req.params.r + '?query='
+  var query = `SELECT * WHERE { ?s rdf:type :${req.params.c} .}`
+  var encoded = encodeURIComponent(prefixes + query)
 
+  axios.get(getLink + encoded)
+    .then(dados => {
+      var props = []
+      dados.data.results.bindings.map(bind =>
+        props.push(bind.s.value.split('#')[1]))
+      res.render('individuo', {repos:req.params.r, classe:req.params.c, individuos:individuos})
+    })
+    .catch(error => console.log(error))
+})
 
-router.get('/types/pubs', function(req, res) {
-  Pub.consultarTypesPub(req.params.id)
-    .then(dados => res.status(200).jsonp(dados))
-    .catch(e => res.status(500).jsonp({error: e}))
-});
-
-router.get('/types', function(req, res) {
-  Pub.listarTypes()
-    .then(dados => res.status(200).jsonp(dados))
-    .catch(e => res.status(500).jsonp({error: e}))
-});
-
-router.get('/autores', function(req, res) {
-  Pub.listarAutores()
-    .then(dados => res.status(200).jsonp(dados))
-    .catch(e => res.status(500).jsonp({error: e}))
-});
-
-
-/*
-GET /api/pubs - Devolve a lista de publicações apenas com os campos "id", "title", "year" e "type";
-GET /api/pubs/:id - Devolve a informação completa de uma publicação;
-GET /api/types - Devolve a lista de tipos, sem repetições;
-GET /api/pubs?type=YYY - Devolve a lista de publicações que tenham o campo "type" com o valor "YYY";
-GET /api/pubs?type=YYY&year=AAAA - Devolve a lista de publicações que tenham o campo "type" com o valor "YYY" e o campo "year" com um valor superior a "AAAA";
-GET /api/autores - Devolve uma lista ordenada alfabeticamente com os nome dos autores ;
-GET /api/pubs?autor=AAA - Devolve uma lista com as publicações do autor.
-*/
 
 module.exports = router;
