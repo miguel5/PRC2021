@@ -3,16 +3,16 @@ extends layout
 block content
 
   header.w3-margin-left
-    h1.w3-text-blue Repositórios
+    h1.w3-text-blue Tabela Periódica
   
-  if repos.length 
-    each r in repos 
+  if elems.length 
+    each e in elems 
       ul
         li 
-          a(href=`/repos/${r.id}`)
-            b= r.id 
-            if r.title 
-              span  - #{r.title}
+          a(href=`/elementos/${e}`)
+            b= e
+            if e 
+              span  - #{e}
 
   else
-    p.w3-margin-left Nenhum repositório encontrado.
+    p.w3-margin-left Nenhum elemento encontrado.

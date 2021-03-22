@@ -5,7 +5,7 @@ var router = express.Router();
 /* GraphDB server IP:port
    Change to 'localhost:7200' if running locally
 */
-var serverIP = 'http://192.168.1.243:7200/'
+var serverIP = 'http://localhost:7200/'
 
 var prefixes = `
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -13,16 +13,24 @@ var prefixes = `
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX noInferences: <http://www.ontotext.com/explicit>
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-    PREFIX adv: <http://www.di.uminho.pt/prc2021/Charada#>
-    PREFIX : <http://www.di.uminho.pt/prc2021/Charada#>
+    PREFIX : <http://www.daml.org/2003/01/periodictable/PeriodicTable#>
 `
 
-var baseLink = serverIP + 'repositories/' 
+var baseLink = serverIP + 'repositories/tabela-periodica' 
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  axios.get(serverIP + 'rest/repositories')
-    .then(dados => res.render('index', {repos:dados.data}))
+  var getLink = baseLink + '?query='
+  var query = `SELECT * WHERE { ?s a :Element .}`
+  var encoded = encodeURIComponent(prefixes + query)
+
+  axios.get(getLink + encoded)
+    .then(dados => {
+      var elementos = []
+      dados.data.results.bindings.map(bind =>
+        elementos.push(bind.s.value.split('#')[1]))
+      res.render('index', {elems:elementos})
+    })
     .catch(erro => console.log(erro))
 });
 

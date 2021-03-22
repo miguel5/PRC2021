@@ -3,10 +3,10 @@
 <pr>
     <meta>
         <key></key>
-        <title>TPC2 -PRC</title>
+        <title>TPC4 -PRC</title>
         <subtitle></subtitle>
-        <bdate>08-03-2021</bdate>
-        <edate>15-03-2021</edate>
+        <bdate>15-03-2021</bdate>
+        <edate>22-03-2021</edate>
         <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
     </meta>
     <workteam>
@@ -17,7 +17,7 @@
     </workteam>
     <abstract>
         <p>
-            Aplicação web que consulta o repositório da 'Charada' no GraphDB e apresenta a respetiva informação num página web
+            Web app que vai buscar os dados de um repositório de uma tabela periódica no Ontobud e apresenta-os numa página web.
         </p>
         <p>
             npm install; npm start
