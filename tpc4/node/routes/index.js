@@ -16,69 +16,187 @@ var prefixes = `
     PREFIX : <http://www.daml.org/2003/01/periodictable/PeriodicTable#>
 `
 
-var baseLink = serverIP + 'repositories/tabela-periodica' 
+var baseLink = serverIP + 'repositories/tabela-periodica?query=' 
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  var getLink = baseLink + '?query='
-  var query = `SELECT * WHERE { ?s a :Element .}`
-  var encoded = encodeURIComponent(prefixes + query)
-
-  axios.get(getLink + encoded)
-    .then(dados => {
-      var elementos = []
-      dados.data.results.bindings.map(bind =>
-        elementos.push(bind.s.value.split('#')[1]))
-      res.render('index', {elems:elementos})
-    })
-    .catch(erro => console.log(erro))
+  res.render('index')
 });
 
-router.get('/repos/:r', function(req, res) {
-  var getLink = baseLink + req.params.r + '?query='
-  var query = `SELECT * WHERE { ?s a owl:Class .}`
+router.get('/elements', function(req, res) {
+  var query = `SELECT * WHERE { ?s a :Element .
+              OPTIONAL {?e :name ?name .}
+              OPTIONAL {?e :group ?group .}
+              OPTIONAL {?e :period ?period .} }
+              ORDER BY (?e)`
+
   var encoded = encodeURIComponent(prefixes + query)
   
-  axios.get(getLink + encoded)
+  axios.get(baseLink + encoded)
     .then(dados => {
-      var classes = []
-      dados.data.results.bindings.map(bind =>
-        classes.push(bind.s.value.split('#')[1]))
-      res.render('repositorio', {repos:req.params.r, classes:classes})
+      var elements = []
+      dados.data.results.bindings.map(bind =>{
+        var name = ""
+        var group = ""
+        var period = ""
+        if(bind.name) name = bind.name.value
+        if(bind.group) group = bind.group.value.split('#')[1]
+        if(bind.period) period = bind.period.value.split('#')[1]
+        elements.push([bind.e.value.split('#')[1], name, group, period])
+      })
+      res.render('elements', {elements:elements})
     })
     .catch(error => console.log(error))
 });
 
-router.get('/repos/:r/classe/:c', function(req, res) {
-  var getLink = baseLink + req.params.r + '?query='
-  var query = `SELECT * WHERE { :${req.params.c} ?p ?o .}`
+router.get('/elements/:e', function(req, res) {
+  var query = `SELECT * WHERE {
+              OPTIONAL {:${req.params.e} :name ?name .} 
+              OPTIONAL {:${req.params.e} :group ?group .} 
+              OPTIONAL {:${req.params.e} :period ?period .} 
+              OPTIONAL {:${req.params.e} :atomicNumber ?atomicNumber .}
+              OPTIONAL {:${req.params.e} :atomicWeight ?atomicWeight .} 
+              OPTIONAL {:${req.params.e} :classification ?classification .} 
+              OPTIONAL {:${req.params.e} :color ?color .} 
+              OPTIONAL {:${req.params.e} :standardState ?standardState .} }`
+
   var encoded = encodeURIComponent(prefixes + query)
 
-  axios.get(getLink + encoded)
+  axios.get(baseLink + encoded)
     .then(dados => {
-      var individuos = []
-      dados.data.results.bindings.map(bind =>
-        individuos.push(bind.s.value.split('#')[1]))
-      res.render('classe', {repos:req.params.r, classe:req.params.c, individuos:individuos})
+      var element = []
+      dados.data.results.bindings.map(bind =>{
+        var name = ""
+        var group = ""
+        var period = ""
+        var atomicNumber = ""
+        var atomicWeight = ""
+        var classification = ""
+        var color = ""
+        var standardState = ""
+        if (bind.name){
+          name = bind.name.value
+          element.push(["name", name])
+        }
+        if (bind.group){
+          group = bind.group.value.split('#')[1]
+          element.push(["group", group])
+        }
+        if (bind.period){
+          period = bind.period.value.split('#')[1]
+          element.push(["period", period])
+        }
+        if (bind.atomicNumber){
+          atomicNumber = bind.atomicNumber.value
+          element.push(["atomic number", atomicNumber])
+        }
+        if (bind.atomicWeight){
+          atomicWeight = bind.atomicWeight.value
+          element.push(["atomic weight", atomicWeight])
+        }
+        if (bind.classification){
+          classification = bind.classification.value.split('#')[1]
+          element.push(["classification", classification])
+        }
+        if (bind.color){
+          color = bind.color.value
+          element.push(["color", color])
+        }
+        if (bind.standardState){
+          standardState = bind.standardState.value.split('#')[1]
+          element.push(["standard state", standardState])
+        }
+      })
+      res.render('element', {id:req.params.e, element:element})
     })
-    .catch(error => console.log(error))
-});
-
-
-router.get('/repos/:r/individuo/:i', function(req, res){
-  var getLink = baseLink + req.params.r + '?query='
-  var query = `SELECT * WHERE { ?s rdf:type :${req.params.c} .}`
-  var encoded = encodeURIComponent(prefixes + query)
-
-  axios.get(getLink + encoded)
-    .then(dados => {
-      var props = []
-      dados.data.results.bindings.map(bind =>
-        props.push(bind.s.value.split('#')[1]))
-      res.render('individuo', {repos:req.params.r, classe:req.params.c, individuos:individuos})
-    })
-    .catch(error => console.log(error))
+    .catch(erro => console.log(erro))
 })
+
+
+router.get('/groups', function(req, res) {
+  var query = `SELECT * WHERE { ?g a :Group .
+              OPTIONAL {?g :name ?name .}
+              OPTIONAL {?g :number ?number .} }
+              ORDER BY (?number)`
+
+  var encoded = encodeURIComponent(prefixes + query)
+
+  axios.get(baseLink + encoded)
+    .then(dados => {
+      var groups = []
+      dados.data.results.bindings.map(bind => {
+        var name = ""
+        var number = ""
+
+        if (bind.name)
+          name = bind.name.value
+        if (bind.number)
+          number = bind.number.value
+
+        groups.push([bind.g.value.split('#')[1], name, number])}
+      )
+      res.render('groups', {groups:groups})
+    })
+    .catch(erro => console.log(erro))
+})
+
+
+router.get('/groups/:g', function(req, res) {
+  var query = `SELECT * WHERE { 
+              OPTIONAL{:${req.params.g} :name ?name .}
+              OPTIONAL{:${req.params.g} :number ?number .}
+              :${req.params.g} :element ?e .}
+              ORDER BY (?e)`
+              
+  var encoded = encodeURIComponent(prefixes + query)
+
+  axios.get(baseLink + encoded)
+    .then(dados => {
+      res.render('group', {id:req.params.g, group:dados.data.results.bindings})
+    })
+    .catch(erro => console.log(erro))
+})
+
+
+router.get('/periods', function(req, res) {
+  var query = `SELECT * WHERE { ?p a :Period .
+              OPTIONAL{ ?p :number ?number .} }
+              ORDER BY (?number)`
+
+  var encoded = encodeURIComponent(prefixes + query)
+
+  axios.get(baseLink + encoded)
+    .then(dados => {
+      var periods = []
+      dados.data.results.bindings.map(bind =>{
+        var number = ""
+        
+        if (bind.number)
+          number = bind.number.value
+        
+        periods.push([bind.p.value.split('#')[1], number ])}
+      )
+      res.render('periods', {periods:periods})
+    })
+    .catch(erro => console.log(erro))
+})
+
+
+router.get('/periods/:p', function(req, res) {
+  var query = `SELECT * WHERE { 
+              OPTIONAL{:${req.params.p} :number ?number .}
+              :${req.params.p} :element ?e .}
+              ORDER BY ASC (?e)`
+  
+  var encoded = encodeURIComponent(prefixes + query)
+
+  axios.get(baseLink + encoded)
+    .then(dados => {
+      res.render('period', {id:req.params.p, period:dados.data.results.bindings})
+    })
+    .catch(erro => console.log(erro))
+})
+
 
 
 module.exports = router;

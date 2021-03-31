@@ -1,0 +1,28 @@
+extends layout
+
+block content
+
+  header.w3-margin-left
+
+    h1.w3-text-orange
+      a(href="/")  Periodic Table - 
+      span.w3-text-red Period #{id}
+  
+  if period 
+    ul
+      if period[0].number
+        li
+          b Número: 
+          span= period[0].number.value
+      li 
+        b Elements: 
+        ul
+          each elem in period
+            li
+              a(href=`/elements/${elem.e.value.split('#')[1]}`)= elem.e.value.split('#')[1]
+
+
+  else 
+    p.w3-margin-left No info.
+
+    a(href="/").w3-margin-left Home Page

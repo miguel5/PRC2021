@@ -1,0 +1,27 @@
+extends layout
+
+block content
+
+  header.w3-margin-left
+    h1.w3-text-orange
+      a(href="/")  Periodic Table  
+      span.w3-text-red - Groups
+
+  if groups.length
+    table.w3-table
+      tr
+        th ID
+        th Name
+        th Number 
+
+      each g in groups  
+        tr 
+          td
+            a(href=`/groups/${g[0]}`)= g[0]
+          td= g[1] 
+          td= g[2]
+
+  else 
+    p.w3-margin-left No info.
+
+    a(href="/").w3-margin-left Home Page

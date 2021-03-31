@@ -3,16 +3,12 @@ extends layout
 block content
 
   header.w3-margin-left
-    h1.w3-text-blue Tabela Periódica
+    h1.w3-text-orange Periodic Table
   
-  if elems.length 
-    each e in elems 
-      ul
-        li 
-          a(href=`/elementos/${e}`)
-            b= e
-            if e 
-              span  - #{e}
-
-  else
-    p.w3-margin-left Nenhum elemento encontrado.
+  ul
+    li.w3-text-teal
+      a(href=`/elements`) Elements
+    li.w3-text-pink
+      a(href=`/groups`) Groups
+    li.w3-text-orange
+      a(href=`/periods`) Periods

@@ -1,0 +1,25 @@
+extends layout 
+
+block content 
+
+    header.w3-margin-left
+        h1.w3-text-orange
+            a(href="/") Periodic Table -
+            span Element #{id}
+
+    if element.length 
+        each e in element 
+            ul 
+                li 
+                    b #{e[1]} - 
+                    if(e[0] === "period")
+                        a(href=`/periods/${e[1]}`)= e[1]
+                    else if e[0] === "group"
+                        a(href=`/groups/${e[1]}`)= e[1]
+                    else
+                        span= e[1]
+
+    else 
+        p.w3-margin-left No info.
+
+    a(href="/").w3-margin-left Home Page

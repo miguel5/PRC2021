@@ -1,0 +1,32 @@
+extends layout
+
+block content
+
+  header.w3-margin-left
+    
+    h1.w3-text-orange 
+      a(href="/")  Periodic Table
+      span.w3-text-teal  - Elements
+
+  if elements.length
+    table.w3-table
+      tr
+        th ID
+        th Name 
+        th Group 
+        th Period 
+
+      each e in elements  
+        tr 
+          td
+            a(href=`/elements/${e[0]}`)= e[0]
+          td= e[1]
+          td
+            a(href=`/groups/${e[2]}`)= e[2] 
+          td
+            a(href=`/periods/${e[3]}`)= e[3]  
+        
+  else 
+    p.w3-margin-left No info.
+
+    a(href="/").w3-margin-left Home Page
