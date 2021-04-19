@@ -1,0 +1,219 @@
+@prefix : <http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/miguel/ontologies/2021/3/afericao> .
+
+<http://www.semanticweb.org/miguel/ontologies/2021/3/afericao> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#eFracaoDe
+:eFracaoDe rdf:type owl:ObjectProperty ;
+           owl:inverseOf :temFracao .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#pagou
+:pagou rdf:type owl:ObjectProperty ;
+       rdfs:domain :fracao ;
+       rdfs:range :mês .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#temEntrada
+:temEntrada rdf:type owl:ObjectProperty ;
+            owl:inverseOf :éEntradaDe .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#temFracao
+:temFracao rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#éEntradaDe
+:éEntradaDe rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#data
+:data rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#descricao
+:descricao rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#entidade
+:entidade rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#mensalidade
+:mensalidade rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#permilagem
+:permilagem rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#tipo
+:tipo rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#valor
+:valor rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#entrada_lista_fracoes
+:entrada_lista_fracoes rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#entrada_mapa_pagamentos
+:entrada_mapa_pagamentos rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#fracao
+:fracao rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#lista_fracoes
+:lista_fracoes rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#livro_receitas
+:livro_receitas rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#mapa_pagamentos
+:mapa_pagamentos rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#mês
+:mês rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#Abr
+:Abr rdf:type owl:NamedIndividual ,
+              :mês .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#Ago
+:Ago rdf:type owl:NamedIndividual ,
+              :mês .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#Dez
+:Dez rdf:type owl:NamedIndividual ,
+              :mês .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#F
+:F rdf:type owl:NamedIndividual ,
+            :fracao ;
+   :eFracaoDe :e1 ;
+   :descricao "1º Dto"^^xsd:string ;
+   :mensalidade "36.45"^^xsd:string ;
+   :permilagem "24"^^xsd:string .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#Fev
+:Fev rdf:type owl:NamedIndividual ,
+              :mês .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#Jan
+:Jan rdf:type owl:NamedIndividual ,
+              :mês .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#Jul
+:Jul rdf:type owl:NamedIndividual ,
+              :mês .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#Jun
+:Jun rdf:type owl:NamedIndividual ,
+              :mês .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#Mai
+:Mai rdf:type owl:NamedIndividual ,
+              :mês .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#Mar
+:Mar rdf:type owl:NamedIndividual ,
+              :mês .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#Nov
+:Nov rdf:type owl:NamedIndividual ,
+              :mês .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#Out
+:Out rdf:type owl:NamedIndividual ,
+              :mês .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#Set
+:Set rdf:type owl:NamedIndividual ,
+              :mês .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#e1
+:e1 rdf:type owl:NamedIndividual ,
+             :entrada_lista_fracoes ;
+    :temFracao :F ;
+    :éEntradaDe :lf1 .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#lf1
+:lf1 rdf:type owl:NamedIndividual ,
+              :lista_fracoes ;
+     :temEntrada :e1 .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#lr1
+:lr1 rdf:type owl:NamedIndividual ,
+              :livro_receitas ;
+     :temEntrada <http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#2020/001> .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#mp1
+:mp1 rdf:type owl:NamedIndividual ,
+              :mapa_pagamentos ;
+     :temEntrada :mp_e1 .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#mp_e1
+:mp_e1 rdf:type owl:NamedIndividual ,
+                :entrada_mapa_pagamentos ,
+                :fracao ;
+       :pagou :Jan ;
+       :éEntradaDe :mp1 .
+
+
+###  http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#2020/001
+<http://www.semanticweb.org/miguel/ontologies/2021/3/afericao#2020/001> rdf:type owl:NamedIndividual ;
+                                                                        :éEntradaDe :lr1 ;
+                                                                        :data "2020-01-04"^^xsd:string ;
+                                                                        :descricao "Manutenção da conta"^^xsd:string ;
+                                                                        :entidade "CGD"^^xsd:string ;
+                                                                        :tipo "Despesa"^^xsd:string ;
+                                                                        :valor "7.28"^^xsd:string .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
