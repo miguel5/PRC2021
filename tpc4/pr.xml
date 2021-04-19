@@ -17,7 +17,7 @@
     </workteam>
     <abstract>
         <p>
-            Web app que vai buscar os dados de um repositório de uma tabela periódica no Ontobud e apresenta-os numa página web.
+            Web app que vai buscar os dados de um repositório de uma tabela periódica no GraphDB e apresenta-os numa página web.
         </p>
         <p>
             npm install; npm start
