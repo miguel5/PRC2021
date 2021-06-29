@@ -1,6 +1,6 @@
 import json
 
-movies = json.load(open('C:\\Users\\Miguel\\Documents\\MIEI\\2021\\PRC\\PRC2021-recurso\\movies.json'))
+movies = json.load(open('C:\\Users\\Miguel\\Documents\\MIEI\\2021\\PRC\\PRC2021\\PRC2021-recurso\\movies.json', encoding="utf8"))
 
 atores = []
 generos = []
@@ -12,39 +12,47 @@ with open('individuos.ttl', 'a', encoding='utf-8') as f:
         for ator in movie['cast']:
             if ator not in atores:
                 atores.append(ator)
-            
+
                 ator_id = atores.index(ator)
 
                 s = ''
-                s = '###  http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#ator' + ator_id
-                s = s + '       :ator' + ator_id + ' rdf:type owl:NamedIndividual ;'
-                s = s + '       :nome "' + ator + '"^^xsd:string .'
+                s = '\n###  http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#ator' + str(ator_id)
+                s = s + '\n       :ator' + str(ator_id) + ' rdf:type owl:NamedIndividual ;'
+                s = s + '\n       :nome "' + ator.replace('"', "'") + '"^^xsd:string .'
 
                 f.write(s)
 
         for genero in movie['genres']:
             if genero not in generos:
-                atores.append(ator)
-            
-                genero_id = generos.index(genero)
+                generos.append(genero)
 
                 s = ''
-                s = '###  http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#' + genero
-                s = s + '       :' + genero + ' rdf:type owl:NamedIndividual ,'
-                s = s + '       :Género .'
+                s = '\n###  http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#' + genero.replace(' ', '_')
+                s = s + '\n       :' + genero.replace(' ', '_') + ' rdf:type owl:NamedIndividual ,'
+                s = s + '\n       :Género .'
 
                 f.write(s)
 
         s = ''
-        s = '###  http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#filme' + str(filme_id)
-        s = s + '       :' + str(filme_id) + ' rdf:type owl:NamedIndividual ,'
-        s = s + '       :Filme ;'
-        s = s + '       '
-        s = s + ':temAtor :ator' + f" ,\n:ator".join(movie['cast'])
-        s = s + '       :title "' + movie['title'] + '" ;'
-        s = s + '       :year "' + movie['year'] + '"^^xsd:int .'
+        s = '\n###  http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#filme' + str(filme_id)
+        s = s + '\n       :filme' + str(filme_id) + ' rdf:type owl:NamedIndividual ,'
+        s = s + '\n       :Filme ;'
+        s = s + '\n       '
+        #s = s + '\n:temAtor :ator' + f" ,\n:ator{movie['cast'].index()}".join(movie['cast'])
+        if len(movie['cast']) != 0:
+            s = s + '\n       :temAtor '
+            for ator in movie['cast'][:-1]:
+                s = s + '     :ator' + str(atores.index(ator)) + ',\n'
+            s = s + '     :ator' + str(atores.index(movie['cast'][-1])) + ';\n'
 
+        if len(movie['genres']) != 0:
+            s = s + '\n       :temGenero '
+            for genero in movie['genres'][:-1]:
+                s = s + '     :' + genero.replace(' ', '_') + ',\n'
+            s = s + '     :' + genero.replace(' ', '_') + ';\n'
+        s = s + '\n       :title "' + movie['title'].replace('"', "'") + '" ;'
+        s = s + '\n       :year "' + str(movie['year']) + '"^^xsd:int .'
 
-        
+        f.write(s)
 
-        
+        filme_id = filme_id + 1

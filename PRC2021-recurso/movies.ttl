@@ -85,6 +85,7 @@
                              :Filme ;
                     :temAtor :Bartine_Burkett ,
                              :gareth_hughes ;
+                    :temGenero :comedy ;
                     :title "Don´t Write Letters" ;
                     :year "1922"^^xsd:int .
 

@@ -1,0 +1,274 @@
+1.
+
+PREFIX : <http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#>
+select (count(distinct ?s) as ?nFilmes) where { 
+    ?s a :Filme .
+    ?s :temAtor ?ator .
+    ?ator :nome "Dan Aykroyd"
+}
+
+R: 41
+
+2.
+
+PREFIX : <http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+select (count(distinct ?s) as ?nFilmes) where { 
+    ?s a :Filme .
+    ?s :year "1900"^^xsd:int
+}
+
+R: 17
+
+3.
+
+PREFIX : <http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#>
+select (count(distinct ?s) as ?nFilmes) where { 
+    ?s a :Filme .
+    ?s :temAtor ?ator .
+    ?ator :nome "Dan Aykroyd" .
+}
+
+R: 41
+
+4.
+
+PREFIX : <http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#>
+select ?ano (count(distinct ?s) as ?nFilmes) where { 
+    ?s a :Filme .
+    ?s :year ?ano .
+}
+group by ?ano
+
+R: 
+ano,nFilmes
+1900,17
+1901,80
+1902,7
+1903,78
+1904,25
+1905,35
+1906,7
+1907,7
+1908,18
+1909,76
+1910,26
+1911,28
+1912,44
+1913,53
+1914,179
+1915,110
+1916,144
+1917,97
+1918,128
+1919,634
+1920,129
+1921,143
+1922,421
+1923,395
+1924,480
+1925,572
+1926,491
+1927,169
+1928,437
+1929,347
+1930,361
+1931,360
+1932,408
+1933,383
+1934,407
+1935,446
+1936,504
+1937,473
+1938,423
+1939,339
+1940,385
+1941,358
+1942,359
+1943,465
+1944,456
+1945,415
+1946,423
+1947,390
+1948,421
+1949,351
+1950,443
+1951,429
+1952,374
+1953,366
+1954,251
+1955,268
+1956,300
+1957,335
+1958,281
+1959,205
+1960,162
+1961,150
+1962,144
+1963,140
+1964,151
+1965,129
+1966,131
+1967,127
+1968,143
+1969,137
+1970,137
+1971,145
+1972,140
+1973,142
+1974,142
+1975,128
+1976,149
+1977,131
+1978,134
+1979,139
+1980,182
+1981,140
+1982,142
+1983,140
+1984,167
+1985,187
+1986,192
+1987,283
+1988,292
+1989,261
+1990,269
+1991,202
+1992,224
+1993,204
+1994,292
+1995,307
+1996,363
+1997,362
+1998,242
+1999,221
+2000,213
+2001,226
+2002,232
+2003,221
+2004,239
+2005,228
+2006,425
+2007,304
+2008,206
+2009,229
+2010,210
+2011,201
+2012,295
+2013,376
+2014,214
+2015,130
+2016,143
+2017,238
+2018,236
+
+5.
+
+PREFIX : <http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#>
+select ?genero (count(distinct ?s) as ?nFilmes) where { 
+    ?s a :Filme .
+    ?s :temGenero ?genero .
+}
+group by ?genero
+
+R:
+genero,nFilmes
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Short,160
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Comedy,6138
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Documentary,504
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Western,2957
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Adventure,889
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Crime,1317
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Action,1064
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Animated,739
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Historical,105
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Biography,338
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Drama,7285
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Horror,1068
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Fantasy,231
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Romance,1004
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Silent,6
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Thriller,624
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#War,484
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Mystery,550
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Erotic,32
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Spy,60
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Sports,91
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Family,277
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Science_Fiction,684
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Musical,975
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Sport,6
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Noir,400
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Suspense,109
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Disaster,29
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Teen,3
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Political,13
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Slasher,13
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Satire,42
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Martial_Arts,18
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Performance,22
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Superhero,70
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Independent,1
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Live_Action,3
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Dance,13
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Supernatural,10
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Legal,1
+http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#Found_Footage,1
+
+6.
+
+PREFIX : <http://www.semanticweb.org/miguel/ontologies/2021/5/recurso#>
+select ?titulo where { 
+    ?s a :Filme .
+    ?s :temAtor ?ator .
+    ?ator :nome "Keanu Reeves" .
+    ?s :title ?titulo
+}
+order by ?titulo
+
+R: 
+titulo
+47 Ronin
+A Scanner Darkly
+A Walk in the Clouds
+Bill & Ted's Bogus Journey
+Bill & Ted's Excellent Adventure
+Bram Stoker's Dracula
+Chain Reaction
+Constantine
+Dangerous Liaisons
+Destination Wedding
+Even Cowgirls Get the Blues
+Feeling Minnesota
+Hardball
+I Love You to Death
+John Wick: Chapter 2
+Johnny Mnemonic
+Little Buddha
+Much Ado About Nothing
+My Own Private Idaho
+Parenthood
+Permanent Record
+Point Break
+River's Edge
+Something's Gotta Give
+Speed
+Street Kings
+Sweet November
+The Bad Batch
+The Day the Earth Stood Still
+The Devil's Advocate
+The Gift
+The Lake House
+The Last Time I Committed Suicide
+The Matrix
+The Matrix Reloaded
+The Matrix Revolutions
+The Night Before
+The Prince of Pennsylvania
+The Private Lives of Pippa Lee
+The Replacements
+The Watcher
+Thumbsucker
+Tune in Tomorrow
+Youngblood
